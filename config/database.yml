@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  host: localhost
+  username: khajan
+  password: '0000'
+
+development:
+  <<: *default
+  database: msksj_development
+
+test:
+  <<: *default
+  database: msksj_test
+
+production:
+  url: <%= ENV['DATABASE_URL'] %>
