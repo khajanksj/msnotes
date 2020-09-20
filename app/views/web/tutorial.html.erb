@@ -27,7 +27,7 @@
 
 <div class="w3-row w3-hide-medium w3-hide-small">
   <div class="w3-col l2" style="overflow-scrolling: auto">
-    <%@chapter=Note.all.where(subject: params[:subject]) %>
+    <%@chapter=Note.all.where(subject: params[:subject]).order('chapter_no ASC') %>
     <%@chapter.each do |chap| %>
       <%= link_to chap.chapter_name , web_tutorial_path(chapter_no: chap.chapter_no, subject: chap.subject), :class=> "w3-small w3-hover-gray w3-button "%>
       <br>
