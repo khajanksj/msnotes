@@ -15,49 +15,48 @@
 </head>
 
 <body>
-<div class="w3-row w3-hide-small w3-pink w3-large">
+<div class="w3-row w3-hide-small w3-black w3-small">
   <div class="w3-col l12">
-    <%= link_to "Home" , web_index_path, :class=> "w3-large w3-padding w3-btn"%>
-    <%@subjects=Note.pluck(:subject).uniq %>
-    <%@subjects.each do|sub| %>
-      <%= link_to sub , web_tutorial_path(chapter_no: '1', subject: sub), :class=> "w3-large w3-btn w3-hover-red w3-padding"%>
+    <%= link_to "Home" , web_index_path, :class=> " w3-btn"%>
+    <%@sub=Note.pluck(:subject).uniq %>
+    <%@sub.each do|sub| %>
+      <%= link_to sub , web_tutorial_path(chapter_no: '1', subject: sub), :class=> "w3-btn"%>
     <% end %>
   </div>
 </div>
 
 <div class="w3-row w3-hide-medium w3-hide-small">
-  <div class="w3-col l2 " style="overflow-scrolling: auto">
-    <%@articles=Note.all.where(subject: params[:subject]) %>
-    <%@articles.each do |chap| %>
-      <%= link_to chap.chapter_name , web_tutorial_path(chapter_no: chap.chapter_no, subject: chap.subject), :class=> "w3-large w3-padding w3-button "%>
+  <div class="w3-col l2 w3-hover-gray" style="overflow-scrolling: auto">
+    <%@chapter=Note.all.where(subject: params[:subject]) %>
+    <%@chapter.each do |chap| %>
+      <%= link_to chap.chapter_name , web_tutorial_path(chapter_no: chap.chapter_no, subject: chap.subject), :class=> "w3-small w3-hover-gray w3-button "%>
       <br>
     <%end %>
   </div>
 
   <div class="w3-col l10 w3-border-left w3-border-black" style="padding-left: 20px;">
-    <%@articles=Note.all.where(subject: params[:subject],chapter_no: params[:chapter_no]) %>
-    <%@articles.each do |chap| %>
-      <%=raw(chap.body) %></a>
+    <%@body=Note.all.where(subject: params[:subject],chapter_no: params[:chapter_no]) %>
+    <%@body.each do |body| %>
+      <%=raw(body.body) %></a>
     <%end %>
   </div>
 </div>
-<div class="w3-sidebar w3-bar-block w3-card w3-animate-right w3-display-topright w3-hide-large" style="display:none" id="mySidebar">
-  <button class="w3-bar-item w3-button w3-large"
+<div class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-display-topleft w3-hide-large" style="display:none" id="mySidebar">
+  <button class="w3-bar-item w3-button"
           onclick="w3_close()">Close &times;</button>
-  <%@articles.each do |chap| %>
-    <%= link_to chap.chapter_name , web_tutorial_path(chapter_no: chap.chapter_no, subject: chap.subject), :class=> "w3-large w3-padding w3-button "%>
+  <%@chapter.each do |chap| %>
+    <%= link_to chap.chapter_name , web_tutorial_path(chapter_no: chap.chapter_no, subject: chap.subject), :class=> "w3-button "%>
     <br>
   <%end %>
 </div>
 
-<div id="main" class="w3-hide-large">
+<div id="main" class="w3-hide-large w3-hide-medium" style="position: fixed; top:0px;left:0px;">
 
-  <div class="w3-teal w3-display-topright">
+  <div class="w3-teal">
     <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="w3_open()">&#9776;</button>
   </div>
   <div class="w3-container">
-    <%@articles=Note.all.where( subject: params[:subject],chapter_no: params[:chapter_no]) %>
-    <%@articles.each do |chap| %>
+    <%@body.each do |chap| %>
       <%=raw(chap.body) %></a>
     <%end %>
   </div>

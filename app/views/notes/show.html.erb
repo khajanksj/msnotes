@@ -17,7 +17,7 @@
 
 <p>
   <strong>Body:</strong>
-  <%= @note.body %>
+<%= raw(truncate(@note.body, :length => 80)) %>
 </p>
 
 <%= link_to 'Edit', edit_note_path(@note) %> |

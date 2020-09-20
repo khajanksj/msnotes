@@ -19,7 +19,7 @@
         <td><%= note.subject %></td>
         <td><%= note.chapter_no %></td>
         <td><%= note.chapter_name %></td>
-        <td><%= note.body %></td>
+        <td><%= truncate(raw(note.body), :length => 80) %></td>
         <td><%= link_to 'Show', note %></td>
         <td><%= link_to 'Edit', edit_note_path(note) %></td>
         <td><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
