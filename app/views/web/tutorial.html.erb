@@ -26,7 +26,7 @@
 </div>
 
 <div class="w3-row w3-hide-medium w3-hide-small">
-  <div class="w3-col l2 w3-hover-gray" style="overflow-scrolling: auto">
+  <div class="w3-col l2" style="overflow-scrolling: auto">
     <%@chapter=Note.all.where(subject: params[:subject]) %>
     <%@chapter.each do |chap| %>
       <%= link_to chap.chapter_name , web_tutorial_path(chapter_no: chap.chapter_no, subject: chap.subject), :class=> "w3-small w3-hover-gray w3-button "%>
@@ -41,7 +41,7 @@
     <%end %>
   </div>
 </div>
-<div class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-display-topleft w3-hide-large" style="display:none" id="mySidebar">
+<div class="w3-small w3-sidebar w3-bar-block w3-card w3-animate-left w3-display-topleft w3-hide-large" style="display:none" id="mySidebar">
   <button class="w3-bar-item w3-button"
           onclick="w3_close()">Close &times;</button>
   <%@chapter.each do |chap| %>
