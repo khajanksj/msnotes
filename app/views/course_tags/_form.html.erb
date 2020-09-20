@@ -1,0 +1,34 @@
+<%@course=Course.select(:course)
+@subject = Subject.select(:subject)%>
+<%= form_with(model: course_tag, local: true) do |form| %>
+  <% if course_tag.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(course_tag.errors.count, "error") %> prohibited this course_tag from being saved:</h2>
+
+      <ul>
+        <% course_tag.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :course %>
+    <%= form.select(:course, @course.collect{|c| [c.course]}, {include_blank: "--Select A Course--"}, :class => 'w3-input')%>
+  </div>
+
+  <div class="field">
+    <%= form.label :subject %>
+    <%= form.select(:subject, @subject.collect{|s| [s.subject]}, {include_blank: "--Select A Subject--"}, :class => 'w3-input')%>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_active %>
+    <%= form.check_box :is_active %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
