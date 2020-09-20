@@ -72,7 +72,7 @@
                   <ul>
                     <%@subject = CourseTag.all.where(course:course.course) %>
                     <%@subject.each do|subject| %>
-                      <%=link_to subject.subject %>
+                      <%=link_to subject.subject, web_tutorial_path(chapter_no: '1', subject: subject) %>
                     <%end %>
                   </ul>
                 </li>
