@@ -15,17 +15,17 @@
 </head>
 
 <body>
-<div class="w3-row w3-hide-small w3-black">
+<div class="w3-row w3-black">
   <div class="w3-col l12 m12 s12">
     <%= link_to "Home" , web_index_path, :class=> " w3-btn"%>
     <%@sub=Note.pluck(:subject).uniq %>
     <%@sub.each do|sub| %>
-      <%= link_to sub , web_tutorial_path(chapter_no: '1', subject: sub), :class=> "w3-btn"%>
+      <%= link_to sub , web_tutorial_path(chapter_no: '1', subject: sub), :class=> "w3-medium w3-btn"%>
     <% end %>
   </div>
 </div>
 
-<div class="w3-row w3-hide-small">
+<div class="w3-row w3-hide-small w3-hide-medium">
   <div class="w3-col l3 m3" style="overflow-scrolling: auto">
     <%@chapter=Note.all.where(subject: params[:subject]).order('chapter_no ASC') %>
     <%@chapter.each do |chap| %>
@@ -34,7 +34,7 @@
     <%end %>
   </div>
 
-  <div class="w3-col l9 m9 w3-border-left w3-border-black" style="padding-left: 20px;">
+  <div class="w3-col l9  w3-border-left w3-border-black" style="padding-left: 20px;">
     <%@body=Note.all.where(subject: params[:subject],chapter_no: params[:chapter_no]) %>
     <%@body.each do |body| %>
       <%=raw(body.body) %></a>
