@@ -15,45 +15,42 @@
 </head>
 
 <body>
-<div class="w3-row w3-black">
-  <div class="w3-col l12 m12 s12">
-    <%= link_to "Home" , web_index_path, :class=> " w3-btn"%>
+  <div class="w3-black" style="width: 100%;">
+    <%= link_to "Home" , web_index_path, :class=> " w3-button"%>
     <%@sub=Note.pluck(:subject).uniq %>
     <%@sub.each do|sub| %>
-      <%= link_to sub , web_tutorial_path(chapter_no: '1', subject: sub), :class=> "w3-medium w3-btn"%>
+      <%= link_to sub , web_tutorial_path(chapter_no: '1', subject: sub), :class=> "w3-button"%>
     <% end %>
   </div>
-</div>
-
 <div class="w3-row w3-hide-small w3-hide-medium">
   <div class="w3-col l3 m3" style="overflow-scrolling: auto">
     <%@chapter=Note.all.where(subject: params[:subject]).order('chapter_no ASC') %>
     <%@chapter.each do |chap| %>
-      <%= link_to chap.chapter_name , web_tutorial_path(chapter_no: chap.chapter_no, subject: chap.subject), :class=> " w3-hover-gray w3-button"%>
+      <%= link_to chap.chapter_name , web_tutorial_path(chapter_no: chap.chapter_no, subject: chap.subject), :class=> "w3-small w3-hover-gray w3-button"%>
       <br>
     <%end %>
   </div>
 
-  <div class="w3-col l9  w3-border-left w3-border-black" style="padding-left: 20px;">
+  <div class="w3-col l9  w3-border-left w3-border-black w3-small" style="padding-left: 20px;">
     <%@body=Note.all.where(subject: params[:subject],chapter_no: params[:chapter_no]) %>
     <%@body.each do |body| %>
       <%=raw(body.body) %></a>
     <%end %>
   </div>
 </div>
-<div class="w3-small w3-sidebar w3-bar-block w3-card w3-animate-left w3-hide-large" style="display:none" id="mySidebar">
+<div class="w3-xxxlarge w3-sidebar w3-bar-block w3-card w3-animate-left w3-hide-large" style="display:none" id="mySidebar">
   <button class="w3-bar-item w3-button"
           onclick="w3_close()">Close &times;</button>
   <%@chapter.each do |chap| %>
-    <%= link_to chap.chapter_name , web_tutorial_path(chapter_no: chap.chapter_no, subject: chap.subject), :class=> "w3-button "%>
+    <%= link_to chap.chapter_name , web_tutorial_path(chapter_no: chap.chapter_no, subject: chap.subject), :class=> "w3-xxxlarge w3-button "%>
     <br>
   <%end %>
 </div>
 
 <div id="main" class="w3-hide-large" style="">
 
-  <div class="w3-teal">
-    <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="w3_open()">&#9776;</button>
+  <div class="w3-black">
+    <button id="openNav" class="w3-button w3-black w3-xxxlarge" onclick="w3_open()">&#9776;</button>
   </div>
   <div class="w3-container">
     <%@body.each do |chap| %>
