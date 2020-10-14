@@ -4,4 +4,7 @@ class WebController < ApplicationController
   def tutorial
 
   end
+   def tut
+
+  end
 end

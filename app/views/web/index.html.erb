@@ -70,9 +70,9 @@
                 <li class="drop-down">
                   <%=link_to course.course, web_index_url %>
                   <ul>
-                    <%@subject = CourseTag.all.where(course:course.course) %>
+                    <%@subject = CourseTag.all.where(course:course.course,is_active:true) %>
                     <%@subject.each do|subject| %>
-                      <%=link_to subject.subject, web_tutorial_path(chapter_no: '1', subject: subject.subject) %>
+                      <%=link_to subject.subject, web_tut_path(chapter_no: '1', subject: subject.subject) %>
                     <%end %>
                   </ul>
                 </li>
