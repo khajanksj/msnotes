@@ -101,7 +101,6 @@
           <div class="carousel-container">
             <div class="container">
               <h2 class="animate__animated animate__fadeInDown"><span>राजीव गाँधी कंप्यूटर साक्षरता मिशन</span></h2>
-              <h2>एम एस कंप्यूटर इंस्टिट्यूट ऑफ़ एजुकेशन & टेक्नोलॉजी</h2>
               <p class="animate__animated animate__fadeInUp"> कासगंज का एक मात्र न. 1 संस्थान <b>फ्री डेमो जरूर लें</b> </p>
               <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Know More</a>
             </div>
@@ -424,7 +423,7 @@
           <%@course.each do|course| %>
           <div class="col-lg-4 col-md-6 portfolio-item filter-<%=course.duration %>">
             <div class="portfolio-wrap">
-              <img src=<%=course.image %> class="img-fluid" alt="">
+              <img src=<%=course.image %> class="img-fluid" alt="" style="width: 100%; height: 200px;">
               <div class="portfolio-info">
                 <a href="#"> <h4 style="color:white;"><%=course.course %></h4></a>
                 <p style="color:white;"><%=course.duration %> Months</p>

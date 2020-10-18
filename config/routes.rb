@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   resources :courses
   root 'web#index'
   get 'web/index'
-  get 'web/tutorial'
   get 'web/tut'
+  devise_for :users
 end
