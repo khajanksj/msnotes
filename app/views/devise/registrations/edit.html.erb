@@ -1,43 +1,91 @@
+<link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/assets/style.css" rel="stylesheet">
+<link href="/assets/w3.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="w3-container w3-card-4 w3-light-grey w3-text-green w3-margin">
+  <h2 class="w3-center">Edit Your Profile</h2>
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+    <div class="w3-row w3-section">
+      <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
+      <div class="w3-rest">
+        <%= f.text_field :name, class: "w3-input w3-border w3-round w3-full",placeholder:"Your Name" %>
+      </div>
+    </div>
+    <div class="w3-row w3-section">
+      <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-envelope-o"></i></div>
+      <div class="w3-rest">
+        <%= f.text_field :email, class: "w3-input w3-border w3-round w3-full", placeholder:"Your E-Mail" %>
+      </div>
+    </div>
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="w3-row w3-section">
+      <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-lock"></i></div>
+      <div class="w3-rest">
+        <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password" , class: "w3-input w3-border w3-round w3-full", placeholder:"Your New Password"%>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
+    <div class="w3-row w3-section">
+      <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-lock"></i></div>
+      <div class="w3-rest">
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "w3-input w3-border w3-round w3-full", placeholder:"Retype Your New Password" %>
+      </div>
+    </div>
+    <div class="w3-row w3-section">
+      <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
+      <div class="w3-rest">
+        <%= f.text_field :father_name, class: "w3-input w3-border w3-round w3-full", placeholder:"Your Father Name" %>
+      </div>
+    </div>
+    <div class="w3-row w3-section">
+      <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-phone"></i></div>
+      <div class="w3-rest">
+        <%= f.telephone_field :phone, class: "w3-input w3-border w3-round w3-full", placeholder:"+91" %>
+      </div>
+    </div>
+    <div class="w3-row w3-section">
+      <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-calendar"></i></div>
+      <div class="w3-rest">
+        <%= f.date_field :dob, class: "w3-input w3-border w3-round w3-full", placeholder:"Your Date Of Birth" %>
+      </div>
+    </div>
+    <div class="w3-row w3-section">
+      <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-home"></i></div>
+      <div class="w3-rest">
+        <%= f.text_field :address, class: "w3-input w3-border w3-round w3-full", placeholder:"Your Home Address" %>
+      </div>
+    </div>
+    <div class="w3-row w3-section">
+      <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-homee"></i></div>
+      <div class="w3-rest">
+        <%= f.text_field :role,value:"Student", class: "w3-input w3-border w3-round w3-full", placeholder:"role"%>
+      </div>
+    </div>
+    <div class="w3-row w3-section">
+      <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-lock"></i></div>
+      <div class="w3-rest">
+        <%= f.password_field :current_password, autocomplete: "current-password", class: "w3-input w3-border w3-round w3-full", placeholder:"Type Your Current Password To Update Profile" %>
+      </div>
+    </div>
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "Update", class: "w3-input w3-green w3-border w3-round w3-full" %>
   </div>
 <% end %>
+<center>
+  <h3>Cancel my account</h3>
 
-<h3>Cancel my account</h3>
+  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "w3-input w3-green w3-border w3-round w3-full" %></p>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+  <%= link_to "Back", :back %>
+</center>
 
-<%= link_to "Back", :back %>
+</div>
